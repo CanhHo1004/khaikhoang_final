@@ -72,13 +72,13 @@ def data():
                         'Atr41','Atr42','Atr43','Atr44','Atr45','Atr46','Atr47','Atr48','Atr49','Atr50',
                         'Atr51','Atr52','Atr53','Atr54','Class'])
         data = pd.DataFrame(data)
-        data.to_csv('./static/output/result.csv', header=False, index=False) # Xuất ra file csv và lưu vào thư mục static/output
+        data.to_csv('./static/result.csv', header=False, index=False) # Xuất ra file csv và lưu vào thư mục static/output
         return render_template('result.html', prediction_text_csv=data.to_html(header=False)) # Hiển thị bảng đã được dự đoán
 
 # Tải file csv xuống
 @app.route('/download', methods=['POST'])
 def download():
-    file = open("./static/output/result.csv", "r")
+    file = open("./static/result.csv", "r")
     return Response(file, mimetype="text/csv",headers={"Content-disposition":"attachment; filename=result.csv"})
 
 # Hàm main để chạy chương trình
