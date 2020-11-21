@@ -25,8 +25,8 @@ def score_dt(X, y):
   kf = KFold(n_splits= 10)                    # Chọn số fold = 10
   total = 0
   for train_index, test_index in kf.split(X): # Tiến hành phân chia
-    X_train, X_test = X.iloc[train_index], X.iloc[test_index]
-    y_train, y_test = y.iloc[train_index], y.iloc[test_index]
+    X_train, X_test = X.iloc[train_index], X.iloc[test_index] # Lấy X_train, X_test theo từng phần được chia của X
+    y_train, y_test = y.iloc[train_index], y.iloc[test_index] # Lấy y_train, y_test theo từng phần được chia của y
     model = DecisionTreeClassifier()          # Khai báo mô hình sử dụng
     model.fit(X_train, y_train)               # Tiến hành huấn luyện
     y_pred = model.predict(X_test)            # Tiến hành dự đoán
